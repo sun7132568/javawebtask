@@ -8,15 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Untitled Document</title>
-<!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -92,7 +84,7 @@
 		<!-- /.container-fluid -->
 	</nav>
 	<div class="container">
-		<table width="80%" border="1" cellspacing="0" cellpadding="0">
+		<table class="table table-striped">
 			<tbody>
 				<tr>
 					<td>身份</td>
@@ -100,21 +92,23 @@
 					<td>性别</td>
 					<td>电话号码</td>
 					<td>邮箱地址</td>
+					<td>操作</td>
 				</tr>
 				<c:forEach items="${userPojos}" var="userPojo">
-				<c:if test="${userPojo.userid == 1 }">
-				<c:set var="identity" scope="request" value="${'管理员'}"></c:set>
-				</c:if>
-				<c:if test="${userPojo.userid == 0 }">
-				<c:set var="identity" scope="request" value="${'普通用户'}"></c:set>
-				</c:if>
-				<tr>
-					<td>${identity }</td>
-					<td>${userPojo.username }</td>
-					<td>${userPojo.sex }</td>
-					<td>${userPojo.phonenum }</td>
-					<td>${userPojo.emailadd }</td>
-				</tr>
+					<c:if test="${userPojo.userid == 1 }">
+						<c:set var="identity" scope="request" value="${'管理员'}"></c:set>
+					</c:if>
+					<c:if test="${userPojo.userid == 0 }">
+						<c:set var="identity" scope="request" value="${'普通用户'}"></c:set>
+					</c:if>
+					<tr>
+						<td>${identity }</td>
+						<td>${userPojo.username }</td>
+						<td>${userPojo.sex }</td>
+						<td>${userPojo.phonenum }</td>
+						<td>${userPojo.emailadd }</td>
+						<td><a>修改</a>&nbsp;/ <a>删除</a></td>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
