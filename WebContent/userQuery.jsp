@@ -31,7 +31,7 @@
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="UserQuery">用户查询</a></li>
-							<li><a href="Register.jsp">添加用户</a></li>
+							<li><a href="#">添加用户</a></li>
 							<li><a href="#">删除用户</a></li>
 							<li><a href="#">修改信息</a></li>
 							<li><a href="#">权限管理</a></li>

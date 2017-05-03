@@ -68,6 +68,7 @@ public class Login extends HttpServlet {
 			List<UserPojo> list = new ArrayList<>();
 			list.add(userPojo);
 			session.setAttribute("userInfo", list);
+			session.setAttribute("username", usrname);
 		}
 	}
 }
