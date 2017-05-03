@@ -76,12 +76,12 @@
 						class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">IS</a>
+				<a class="navbar-brand" href="index.jsp">IS</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="inverseNavbar1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.html">主页<span
+					<li class="active"><a href="index.jsp">主页<span
 							class="sr-only">(current)</span></a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">用户管理<span
