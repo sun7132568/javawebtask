@@ -23,7 +23,6 @@ public class Register extends HttpServlet {
 
 	public Register() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public void destory() {
@@ -55,6 +54,5 @@ public class Register extends HttpServlet {
 			userPojo.setEmailadd(emailadd);
 			
 			userService.create(userPojo);
-//			request.getRequestDispatcher("Regsuccess.html").forward(request, response);
 		}	
 }

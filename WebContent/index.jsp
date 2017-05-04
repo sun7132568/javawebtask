@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*"%>
+<%
+	String usrname = (String) session.getAttribute("username");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,21 +48,20 @@
 		$.ajax({
 			cache : true,
 			type : "POST",
-			url : "Login",
+			url : "Login?method=login",
 			data : $('#login').serialize(),
-			async : false,
+			dataType : "json",
+			cache : false,
+			async : true,
 			error : function(request) {
 				alert("Connection error:" + request.error);
 			},
 			success : function(data) {
-				if (data == 0)
+				if (data.flag == 0)
 					window.location.href = "admin.html";
-				else if (data == 1) {	
-					$("#cls").click();		
-					document.getElementById("usrname").innerHTML=$('username').val();
-					$("#lrbtn").hide();
-					$("#userinfo").show();
-				} else if (data == 2)
+				else if (data.flag == 1) {
+					window.location.reload();
+				} else if (data.flag == 2)
 					alert("身份选择错误！")
 				else
 					alert("账号或密码错误！")
@@ -102,25 +105,14 @@
 					</div>
 					<button type="submit" class="btn btn-default">查询</button>
 				</form>
-				<span id="lrbtn" class="navbar-right nav">
-					<button type="button" class="btn navbar-btn" data-toggle="modal"
-						data-target="#Modal" style="margin-right: 15px;">登录</button>
-					<button type="button" class="btn navbar-btn"
-						onclick="window.location.href='register.html'"
-						style="margin-right: 20px;">注册</button>
-				</span> <span id="userinfo" class="navbar-right" hidden="">
-					<ul class="nav navbar-nav">
-						<li class="dropdown"><a href="#"  id="usrname"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false">###</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">修改信息</a></li>
-								<li><a href="#">借阅查询</a></li>
-								<li class="divider"></li>
-								<li><a href="#">退出登录</a></li>
-							</ul></li>
-					</ul>
-				</span>
+				<div class="navbar-right nav" hidden=""></div>
+				<div class="navbar-right nav" id="state_content">
+
+					<!-- ------------加载注册登录按钮或者登录状态信息----------- -->
+				</div>
+				<script type="text/javascript">
+					$("#state_content").load("CkState");
+				</script>
 			</div>
 		</div>
 	</nav>

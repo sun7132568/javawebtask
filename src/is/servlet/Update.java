@@ -54,6 +54,7 @@ public class Update extends HttpServlet {
 		userPojo.setPhonenum(phonenum);
 		userPojo.setEmailadd(emailadd);
 		userService.update(userPojo);
+		
 		out.flush();
 		out.close();
 		

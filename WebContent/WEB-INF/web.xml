@@ -65,4 +65,14 @@
     <servlet-name>UserQuery</servlet-name>
     <url-pattern>/UserQuery</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CkState</display-name>
+    <servlet-name>CkState</servlet-name>
+    <servlet-class>is.servlet.CkState</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CkState</servlet-name>
+    <url-pattern>/CkState</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -9,6 +9,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>管理员控制台</title>
 <link href="css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript">
+	function CkDelete(){
+		if(window.confirm("确认删除用户？")){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -84,7 +94,7 @@
 						<td>${userPojo.sex }</td>
 						<td>${userPojo.phonenum }</td>
 						<td>${userPojo.emailadd }</td>
-						<td><a>修改</a>&nbsp;/ <a>删除</a></td>
+						<td><a href="welcome.jsp">修改</a>&nbsp;/ <a href="#" onclick="return CkDelete()">删除</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
