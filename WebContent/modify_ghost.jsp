@@ -1,12 +1,22 @@
-﻿<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="is.pojo.UserPojo"%>
+<%
+	UserPojo userPojo = (UserPojo) request.getAttribute("userInfo");
+	String userid = "";
+	if (userPojo.getUserid() == "1" || userPojo.getUserid().equals("1")) {
+		userid = "管理员";
+	} else {
+		userid = "普通用户";
+	}
+%>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>图书管理系统</title>
-<!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
@@ -17,22 +27,9 @@
 		}
 	});
 	$().ready(function() {
-		$("#basicBootstrapForm").validate({
+		$("#form1").validate({
 
 			rules : {
-				username : {
-					required : true,
-					minlength : 6,
-					remote : {
-						url : "CkUserNameExist",
-						type : "POST",
-						data : {
-							username : function() {
-								return $("#username").val();
-							}
-						}
-					}
-				},
 				password : {
 					required : true,
 					minlength : 6
@@ -54,11 +51,6 @@
 
 			},
 			messages : {
-				username : {
-					required : "用户名不能为空！",
-					minlength : "用户名不得低于6位字符！",
-					remote : "用户名已被注册"
-				},
 				password : {
 					required : "密码不能为空！",
 					minlength : "密码不得低于6位字符！"
@@ -78,41 +70,39 @@
 					email : "请输入正确的电子邮箱地址！"
 				}
 			}
-		})
-	});
-
+		});
+	})
 	function ajaxSubmitForm() {
 		$.ajax({
-			cache : true,
+			cache : false,
 			type : "POST",
-			url : "Register",
-			data : $('#basicBootstrapForm').serialize(),
-			async : false,
+			url : "Update",
+			data : $('#form1').serialize(),
+			async : true,
 			error : function(request) {
 				alert("Connection error:" + request.error);
 			},
 			success : function(data) {
-				alert("注册成功！");
-				window.location.href = "index.jsp";
+				alert("修改成功！");
+				window.location.reload();
 			}
 		});
 	}
 </script>
 </head>
-
 <body>
-	<nav class="navbar navbar-default navbar-fix-top">
+	<nav class="navbar navbar-default ">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#inverseNavbar1">
+					data-toggle="collapse" data-target="#defaultNavbar1">
 					<span class="sr-only">Toggle navigation</span><span
 						class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.jsp">IS</a>
 			</div>
-			<div class="collapse navbar-collapse" id="inverseNavbar1">
+			<div class="collapse navbar-collapse" id="defaultNavbar1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Link<span class="sr-only">(current)</span></a></li>
 					<li><a href="#">###</a></li>
@@ -135,71 +125,73 @@
 					</div>
 					<button type="submit" class="btn btn-default">查询</button>
 				</form>
+				<div class="navbar-right nav" hidden=""></div>
+				<div class="navbar-right nav" id="state_content">
+					<!-- ------------加载注册登录按钮或者登录状态信息----------- -->
+				</div>
+				<script type="text/javascript">
+					$("#state_content").load("CkState");
+				</script>
 			</div>
 		</div>
 	</nav>
-
 	<div class="container">
-		<div class="row">
-			<form id="basicBootstrapForm" class="form-horizontal" role="form">
-				<div class="form-group">
-					<label class="col-xs-3 control-label">用户名</label>
-					<div class="col-xs-5">
-						<input type="text" class="form-control" name="username"
-							id="username" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-3 control-label">密码</label>
-					<div class="col-xs-5">
-						<input type="password" class="form-control" name="password"
-							id="password" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-3 control-label">确认密码</label>
-					<div class="col-xs-5">
-						<input type="password" class="form-control" name="passwordrepeat"
-							id="passwordrepeat" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-3 control-label">性别</label>
-					<div class="col-xs-6">
-						<div class="col-xs-5">
-							<label class="checkbox-inline"> <input type="radio" name="sex" value="男"
-								checked="checked" required /> 男
-							</label>
-							<label class="checkbox-inline"> <input type="radio" name="sex" value="女" />
-								女
-							</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-3 control-label">电话号码</label>
-					<div class="col-xs-5">
-						<input type="text" class="form-control" name="phonenum"
-							id="phonenum" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-3 control-label">邮箱地址</label>
-					<div class="col-xs-5">
-						<input type="text" class="form-control" name="emailadd"
-							id="emailadd" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-xs-9 col-xs-offset-3">
-						<button type="submit" class="btn btn-primary">注册</button>
-					</div>
-				</div>
-			</form>
-		</div>
+		<form id="form1" role="form">
+			<input type="hidden" id="userid" name="userid"
+				value="<%=userPojo.getUserid()%>" class="form-control" readonly />
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td>用户名</td>
+						<td><div class=" col-sm-6">
+								<input type="text" id="username" name="username"
+									value="<%=userPojo.getUsername()%>" class="form-control"
+									readonly />
+							</div></td>
+					</tr>
+					<tr>
+						<td>密码</td>
+						<td><div class=" col-sm-6">
+								<input type="text" name="password" id="password"
+									value="<%=userPojo.getPassword()%>" class="form-control" />
+							</div></td>
+					</tr>
+					<tr>
+						<td>性别</td>
+						<td><div class=" col-sm-6">
+								<label class="checkbox-inline"> <input type="radio"
+									name="sex" value="男" checked> 男
+								</label> <label class="checkbox-inline"> <input type="radio"
+									name="sex" value="女"> 女
+								</label>
+							</div></td>
+					</tr>
+					<tr>
+						<td>电话号码</td>
+						<td><div class=" col-sm-6">
+								<input type="text" name="phonenum" id="phonenum"
+									value="<%=userPojo.getPhonenum()%>" class="form-control" />
+							</div></td>
+					</tr>
+					<tr>
+						<td>邮箱地址</td>
+						<td><div class=" col-sm-6">
+								<input type="text" name="emailadd" id="emailadd"
+									value="<%=userPojo.getEmailadd()%>" class="form-control" />
+							</div></td>
+					</tr>
+					<tr>
+						<td><div class=" col-sm-6 pull-right">
+								<button type="submit" class="btn btn-primary">提交</button>
+							</div></td>
+						<td><div class=" col-sm-6">
+								<button type="reset" class="btn btn-primary">重置</button>
+							</div></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 	</div>
-
 	<script src="js/bootstrap.js"></script>
 </body>
-
 </html>

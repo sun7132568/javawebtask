@@ -75,4 +75,14 @@
     <servlet-name>CkState</servlet-name>
     <url-pattern>/CkState</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Modify</display-name>
+    <servlet-name>Modify</servlet-name>
+    <servlet-class>is.servlet.Modify</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Modify</servlet-name>
+    <url-pattern>/Modify</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -42,8 +42,6 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="UserQuery">用户查询</a></li>
 							<li><a href="#">添加用户</a></li>
-							<li><a href="#">删除用户</a></li>
-							<li><a href="#">修改信息</a></li>
 							<li><a href="#">权限管理</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -94,7 +92,7 @@
 						<td>${userPojo.sex }</td>
 						<td>${userPojo.phonenum }</td>
 						<td>${userPojo.emailadd }</td>
-						<td><a href="welcome.jsp">修改</a>&nbsp;/ <a href="#" onclick="return CkDelete()">删除</a></td>
+						<td><a href="Modify?username=${userPojo.username }">修改</a>&nbsp;/ <a href="#" onclick="return CkDelete()">删除</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

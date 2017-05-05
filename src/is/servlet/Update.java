@@ -1,15 +1,12 @@
 package is.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 
 import is.pojo.UserPojo;
@@ -35,11 +32,9 @@ public class Update extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
 		String userid = request.getParameter("userid");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -54,14 +49,7 @@ public class Update extends HttpServlet {
 		userPojo.setPhonenum(phonenum);
 		userPojo.setEmailadd(emailadd);
 		userService.update(userPojo);
-		
-		out.flush();
-		out.close();
-		
-		List<UserPojo> list = new ArrayList<>();
-		list.add(userPojo);
-		session.setAttribute("userInfo", list);
-//		session.invalidate();
+
 	}
 
 

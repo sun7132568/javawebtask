@@ -2,8 +2,6 @@ package is.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -83,9 +81,7 @@ public class Login extends HttpServlet {
 
 		if (flag == "0" || flag == "1") {
 			HttpSession session = request.getSession();
-			List<UserPojo> list = new ArrayList<>();
-			list.add(userPojo);
-			session.setAttribute("userInfo", list);
+			session.setAttribute("userInfo", userPojo);
 			session.setAttribute("username", usrname);
 		}
 	}

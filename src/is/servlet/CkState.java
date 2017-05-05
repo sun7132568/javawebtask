@@ -44,7 +44,7 @@ public class CkState extends HttpServlet {
 					+ "<a href='#' class='dropdown-toggle' id='usrname' data-toggle='dropdown' role='button' aria-expanded='false'>"
 					+session.getAttribute("username")
 					+ "<span class='caret'></span></a>" + "<ul class='dropdown-menu' role='menu'>"
-					+ "<li><a href='#'>修改信息</a></li>" + "<li><a href='#'>借阅查询</a></li>" + "<li class='divider'></li>"
+					+ "<li><a href='Modify?username="+session.getAttribute("username")+"'>修改信息</a></li>" + "<li><a href='#'>借阅查询</a></li>" + "<li class='divider'></li>"
 					+ "<li><a href='Login?method=logout'>退出登录</a></li>" + "</ul></li>" + "</ul>";
 			out.println(text);
 		}

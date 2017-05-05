@@ -149,8 +149,8 @@ input[type="radio"] {
 </style>
 <%
 	session = request.getSession();
-	List<UserPojo> list = (List) session.getAttribute("userInfo");
-	UserPojo userPojo = list.get(0);	
+	
+	UserPojo userPojo = (UserPojo)session.getAttribute("userInfo");	
 %>
 <title>个人信息修改</title>
 </head>
