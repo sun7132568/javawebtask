@@ -41,7 +41,6 @@
 
 	function ajaxSubmitForm() {
 		$.ajax({
-			cache : true,
 			type : "POST",
 			url : "Login?method=login",
 			data : $('#login').serialize(),
@@ -126,38 +125,36 @@
 				<div class="modal-body">
 					<form id="login" class="form-horizontal" role="form">
 						<div class="form-group">
-							<label class="col-xs-3 control-label">Username</label>
+							<label class="col-xs-3 control-label">账号</label>
 							<div class="col-xs-5">
 								<input type="text" class="form-control" name="username"
 									id="username" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-xs-3 control-label">Password</label>
+							<label class="col-xs-3 control-label">密码</label>
 							<div class="col-xs-5">
 								<input type="password" class="form-control" name="password"
 									id="password" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-xs-3 control-label">ID</label>
-							<div class="col-xs-6">
-								<div class="radio">
-									<label class="col-xs-3 control-label"> <input
+							<label class="col-xs-3 control-label">身份</label>
+							<div class="col-xs-6">		
+									<label class="col-xs-5 control-label"> <input
 										type="radio" name="identity" value="admin" checked="checked"
-										required /> Admin
-									</label> <label class="col-xs-3 control-label"> <input
-										type="radio" name="identity" value="ghost" /> Ghost
-									</label>
-								</div>
+										required /> 管理员
+									</label> <label class="col-xs-5 control-label"> <input
+										type="radio" name="identity" value="ghost" /> 普通用户
+									</label>				
 							</div>
 						</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary">登录</button>
 					</form>
 					<button id="cls" type="button" class="btn btn-primary pull-right"
-						data-dismiss="modal">Close</button>
+						data-dismiss="modal">关闭</button>
 				</div>
 			</div>
 		</div>

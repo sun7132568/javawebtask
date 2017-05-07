@@ -57,13 +57,12 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
-	public void delete(UserPojo userPojo){
+	public void delete(String username){
 		try {
 			PreparedStatement preparedStatement = null;
-			String sql = "delete from user where userid=? and username=?";
+			String sql = "delete from user where username=?";
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1,userPojo.getUserid());
-			preparedStatement.setString(2,userPojo.getUsername());
+			preparedStatement.setString(1,username);
 			preparedStatement.executeUpdate();
 			DBManager.close(preparedStatement);
 		} catch (SQLException e) {

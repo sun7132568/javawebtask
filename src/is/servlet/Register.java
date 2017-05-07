@@ -43,9 +43,8 @@ public class Register extends HttpServlet {
 		String sex = request.getParameter("sex");
 		String phonenum = request.getParameter("phonenum");
 		String emailadd = request.getParameter("emailadd");
-	
+		String userid = request.getParameter("userid");
 			UserPojo userPojo = new UserPojo();
-			String userid = "0";
 			userPojo.setUserid(userid);
 			userPojo.setUsername(username);
 			userPojo.setPassword(password);

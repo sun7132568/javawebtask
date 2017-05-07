@@ -92,7 +92,8 @@
 						<td>${userPojo.sex }</td>
 						<td>${userPojo.phonenum }</td>
 						<td>${userPojo.emailadd }</td>
-						<td><a href="Modify?username=${userPojo.username }">修改</a>&nbsp;/ <a href="#" onclick="return CkDelete()">删除</a></td>
+						<td><a href="Modify?username=${userPojo.username }">修改</a>&nbsp;/ 
+							<a href="Delete?username=${userPojo.username }" onclick="return CkDelete()">删除</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

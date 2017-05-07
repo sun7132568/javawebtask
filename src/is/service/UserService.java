@@ -28,8 +28,8 @@ public class UserService {
 		userDao.update(userPojo);
 	}
 
-	public void delete(UserPojo userPojo) {
-		userDao.delete(userPojo);
+	public void delete(String username) {
+		userDao.delete(username);
 	}
 
 	public void close() {

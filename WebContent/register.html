@@ -83,11 +83,11 @@
 
 	function ajaxSubmitForm() {
 		$.ajax({
-			cache : true,
+			cache : false,
 			type : "POST",
 			url : "Register",
 			data : $('#basicBootstrapForm').serialize(),
-			async : false,
+			async : true,
 			error : function(request) {
 				alert("Connection error:" + request.error);
 			},
@@ -142,6 +142,7 @@
 	<div class="container">
 		<div class="row">
 			<form id="basicBootstrapForm" class="form-horizontal" role="form">
+			<input name="userid" id="userid" type="hidden" value="0">
 				<div class="form-group">
 					<label class="col-xs-3 control-label">用户名</label>
 					<div class="col-xs-5">
